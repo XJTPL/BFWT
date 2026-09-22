@@ -41,7 +41,7 @@ html, body {
       font-size: 16px;
       font-family: Tahoma, sans-serif;
       padding: 16px;
-      padding-left: 2.5px;
+      padding-left: 2px;
       flex-grow: 1;
       & a {
         color: currentColor;
