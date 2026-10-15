@@ -13,7 +13,7 @@ function initBFWT(subtitle, ...links) {
             return response.text();
         })
         .then(titleBarHTML => {
-            document.getElementById(elementId).innerHTML = titleBarHTML;
+            document.body.insertAdjacentHTML('afterbegin', titleBarHTML);
         })
         .catch(error => {
             console.error('Error loading the HTML file:', error);
