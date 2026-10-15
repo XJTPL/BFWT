@@ -54,8 +54,7 @@ html, body {
   padding-left: 10px;
   margin: 0;
   flex: 1;
-}
-.anchorDiv {
-  padding-left: 10px;
-  min-width: 0;
+  .anchorDiv {
+    min-width: 0;
+  }
 }
