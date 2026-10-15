@@ -19,14 +19,17 @@ function initBFWT(subtitle, ...links) {
 
             linksPlatter = document.getElementById("LP");
             for (const [name, href, title] of links) {
-            const bullet = document.createTextNode(" \u2022\u00A0");
+                const linkDiv = document.createElement("div");
+                linkDiv.className = "linkDiv";
+                const bullet = document.createTextNode(" \u2022 ");
                 const anchorDiv = document.createElement("div");
+                anchorDiv.className = "anchorDiv";
                 const anchor = document.createElement("a");
                 anchor.textContent = name;
                 anchor.href = href;
                 anchor.title = title;
                 anchorDiv.append(anchor);
-                linksPlatter.append(bullet, anchorDiv);
+                linkDiv.append(bullet, anchorDiv);
             }
         })
         .catch(error => {

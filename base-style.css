@@ -1,50 +1,60 @@
 html, body {
-      margin: 0;
-      padding: 0;
-    }
-    .titleBar {
-      width: 100%;
-      box-sizing: border-box;
-      border-bottom-width: 5px;
-      border-bottom-style: outset;
-      border-bottom-color: #313131;
-      background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .titlePlate {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      font-family: "Times New Roman", Times, serif;
-      padding: 12px;
-      padding-right: 0;
-      line-height: 1.0;
-    }
-    .titleBFWT {
-      font-size: 72px;
-      font-weight: bold;
-      & a {
-        text-decoration: none;
-      }
-      & a:hover {
-        text-decoration: underline #E1E1E1 solid 4px;
-      }
-    }
-    .subtitle {
-      font-size: 16px;
-      color: #313131;
-    }
-    .linksPlatter {
-      text-align: left;
-      font-size: 16px;
-      font-family: Tahoma, sans-serif;
-      padding: 16px;
-      padding-left: 2px;
-      flex-grow: 1;
-      & a {
-        color: currentColor;
-        text-decoration: underline;
-      }
+  margin: 0;
+  padding: 0;
+}
+.titleBar {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom-width: 5px;
+  border-bottom-style: outset;
+  border-bottom-color: #313131;
+  background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titlePlate {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: "Times New Roman", Times, serif;
+  padding: 12px;
+  padding-right: 0;
+  line-height: 1.0;
+}
+.titleBFWT {
+  font-size: 72px;
+  font-weight: bold;
+  & a {
+    text-decoration: none;
+  }
+  & a:hover {
+    text-decoration: underline #E1E1E1 solid 4px;
+  }
+}
+.subtitle {
+  font-size: 16px;
+  color: #313131;
+}
+.linksPlatter {
+  text-align: left;
+  font-size: 16px;
+  font-family: Tahoma, sans-serif;
+  padding: 16px;
+  padding-left: 2px;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  & a {
+    color: currentColor;
+    text-decoration: underline;
+  }
+}
+.linkDiv {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.anchorDiv {
+  flex: 1;
+  min-width: 0;
 }
