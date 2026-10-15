@@ -24,6 +24,7 @@ function initBFWT(subtitle, ...links) {
             die();
         });
 
+    waitForDOMUpdate();
     subtitleTag = document.getElementById("subtitle");
     subtitleTag.textContent = subtitle;
 
@@ -44,6 +45,15 @@ function initBFWT(subtitle, ...links) {
 
 function die() {
     document.documentElement.innerHTML = "512 Unexpected Failure";
-    throw null
+    throw null;
+}
+
+
+function waitForDOMUpdate() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      setTimeout(resolve, 0);
+    });
+  });
 }
 
