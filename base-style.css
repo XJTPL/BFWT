@@ -42,20 +42,20 @@ html, body {
   font-family: Tahoma, sans-serif;
   padding: 16px;
   padding-left: 0;
-  flex-grow: 1;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
   & a {
     color: currentColor;
     text-decoration: underline;
   }
 }
 .linkDiv {
-  display: inline-block;
   padding: 0;
   padding-left: 10px;
   margin: 0;
-  display: flex;
+  flex: 1;
 }
 .anchorDiv {
+  padding-left: 10px;
   min-width: 0;
 }
