@@ -10,36 +10,29 @@ var linksPlatter = null;
 
 function initBFWT(subtitle, ...links) {
     fetch('/BFWT/titlebar.htmlfrag')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-        })
+        .then(response => response.text())
         .then(titleBarHTML => {
             document.body.insertAdjacentHTML('afterbegin', titleBarHTML);
+
+            subtitleTag = document.getElementById("subtitle");
+            subtitleTag.textContent = subtitle;
+
+            linksPlatter = document.getElementById("LP");
+            for (const [name, href, title] of links) {
+            const bullet = document.createTextNode(" \u2022\u00A0");
+                const anchorDiv = document.createElement("div");
+                const anchor = document.createElement("a");
+                anchor.textContent = name;
+                anchor.href = href;
+                anchor.title = title;
+                anchorDiv.append(anchor);
+                linksPlatter.append(bullet, anchorDiv);
+            }
         })
         .catch(error => {
-            console.error('Error loading the HTML file:', error);
+            console.error('', error);
             die();
-        });
-
-    waitForDOMUpdate();
-    subtitleTag = document.getElementById("subtitle");
-    subtitleTag.textContent = subtitle;
-
-    linksPlatter = document.getElementById("LP");
-    for (const [name, href, title] of links) {
-        const bullet = document.createTextNode(" \u2022\u00A0");
-        const anchorDiv = document.createElement("div");
-        const anchor = document.createElement("a");
-        anchor.textContent = name;
-        anchor.href = href;
-        anchor.title = title;
-        anchorDiv.append(anchor);
-
-        linksPlatter.append(bullet, anchorDiv);
-    }
+        }); 
 }
 
 
