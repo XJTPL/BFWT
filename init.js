@@ -8,7 +8,7 @@ function initBFWT(subtitle, ...links) {
     fetch('/BFWT/titlebar.htmlfrag')
         .then(response => {
             if (!response.ok) {
-                die();
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.text();
         })
@@ -16,6 +16,7 @@ function initBFWT(subtitle, ...links) {
             document.getElementById(elementId).innerHTML = titleBarHTML;
         })
         .catch(error => {
+            console.error('Error loading the HTML file:', error);
             die();
         });
 
@@ -39,5 +40,6 @@ function initBFWT(subtitle, ...links) {
 
 function die() {
     document.documentElement.innerHTML = "512 Unexpected Failure";
+    throw null
 }
 
