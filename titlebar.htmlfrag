@@ -1,0 +1,9 @@
+<div class="titleBar">
+  <div class="titlePlate">
+    <div class="title">
+      <a href="https://xjtpl.github.io/BFWT/"><span style="color: red;">B</span><span style="color: yellow;">F</span><span style="color: lime;">W</span><span style="color: blue;">T</span></a>
+    </div>
+    <div id="subtitle" class="subtitle"></div>
+  </div>
+  <div id="LP" class="linksPlatter"></div>
+</div>
