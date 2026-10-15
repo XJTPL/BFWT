@@ -13,7 +13,7 @@ function initBFWT(subtitle, ...links) {
             return response.text();
         })
         .then(titleBarHTML => {
-            document.body.insertAdjacentHTML('afterbegin', titleBarHTML);
+            document.getElementById(elementId).innerHTML = titleBarHTML;
         })
         .catch(error => {
             die();
