@@ -22,7 +22,7 @@ html, body {
       padding-right: 0;
       line-height: 1.0;
     }
-    .title {
+    .titleBFWT {
       font-size: 72px;
       font-weight: bold;
       & a {
