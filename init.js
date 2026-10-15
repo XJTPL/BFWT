@@ -33,7 +33,7 @@ function initBFWT(subtitle, ...links) {
             }
         })
         .catch(error => {
-            console.error('', error);
+            console.error(error);
             die();
         }); 
 }
