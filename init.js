@@ -52,7 +52,7 @@ function die() {
 function waitForDOMUpdate() {
   return new Promise((resolve) => {
     requestAnimationFrame(() => {
-      setTimeout(resolve, 0);
+      requestAnimationFrame(resolve);
     });
   });
 }
