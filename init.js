@@ -30,6 +30,7 @@ function initBFWT(subtitle, ...links) {
                 anchor.title = title;
                 anchorDiv.append(anchor);
                 linkDiv.append(bullet, anchorDiv);
+                linksPlatter.append(linkDiv);
             }
         })
         .catch(error => {
