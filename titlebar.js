@@ -61,5 +61,5 @@ function initBFWT(subtitle, ...links) {
         linksPlatter.append(bullet, anchorDiv);
     }
 
-    titleBar.append(linksPlatter):
+    titleBar.append(linksPlatter);
 }
