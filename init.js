@@ -4,6 +4,10 @@ tbstyle.type = "text/css";
 tbstyle.href = "/BFWT/base-style.css";
 document.head.appendChild(tbstyle);
 
+
+var subtitleTag = null;
+var linksPlatter = null;
+
 function initBFWT(subtitle, ...links) {
     fetch('/BFWT/titlebar.htmlfrag')
         .then(response => {
@@ -20,10 +24,10 @@ function initBFWT(subtitle, ...links) {
             die();
         });
 
-    const subtitleTag = document.getElementById("subtitle");
+    subtitleTag = document.getElementById("subtitle");
     subtitleTag.textContent = subtitle;
 
-    const linksPlatter = document.getElementById("LP");
+    linksPlatter = document.getElementById("LP");
     for (const [name, href, title] of links) {
         const bullet = document.createTextNode(" \u2022\u00A0");
         const anchorDiv = document.createElement("div");
