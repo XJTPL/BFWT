@@ -21,7 +21,7 @@ function initBFWT(subtitle, ...links) {
             for (const [name, href, title] of links) {
                 const linkDiv = document.createElement("div");
                 linkDiv.className = "linkDiv";
-                const bullet = document.createTextNode(" \u2022 ");
+                const bullet = document.createTextNode("\u2022");
                 const anchorDiv = document.createElement("div");
                 anchorDiv.className = "anchorDiv";
                 const anchor = document.createElement("a");

@@ -10,7 +10,7 @@ html, body {
   border-bottom-color: #313131;
   background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
   display: flex;
-  align-content: center;
+  align-items: center;
 }
 .titlePlate {
   display: flex;
@@ -39,8 +39,9 @@ html, body {
   text-align: left;
   font-size: 16px;
   font-family: Tahoma, sans-serif;
-  padding: 16px;
-  padding-left: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-left: -4px;
   display: flex;
   flex-direction: row;
   & a {
@@ -50,10 +51,11 @@ html, body {
 }
 .linkDiv {
   padding: 0;
-  padding-left: 10px;
+  padding-left: 8px;
   margin: 0;
   display: flex;
-  .anchorDiv {
+}
+.anchorDiv {
+    padding-left: 8px;
     min-width: 0;
-  }
 }
