@@ -52,7 +52,7 @@ html, body {
   padding: 0;
   padding-left: 10px;
   margin: 0;
-  flex: 1;
+  display: flex;
   .anchorDiv {
     min-width: 0;
   }
