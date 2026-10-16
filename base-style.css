@@ -11,7 +11,7 @@ html, body {
   background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 .titlePlate {
   display: flex;
