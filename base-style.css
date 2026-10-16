@@ -10,8 +10,7 @@ html, body {
   border-bottom-color: #313131;
   background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
   display: flex;
-  align-items: center;
-  justify-content: left;
+  align-content: center;
 }
 .titlePlate {
   display: flex;
