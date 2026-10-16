@@ -39,11 +39,11 @@ html, body {
   text-align: left;
   font-size: 16px;
   font-family: Tahoma, sans-serif;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  margin-left: -4px;
+  margin-left: -2px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 8px;
   & a {
     color: currentColor;
     text-decoration: underline;
@@ -54,8 +54,9 @@ html, body {
   padding-left: 8px;
   margin: 0;
   display: flex;
+  align-items: center;
 }
 .anchorDiv {
-    padding-left: 8px;
-    min-width: 0;
+  padding-left: 8px;
+  min-width: 0;
 }
