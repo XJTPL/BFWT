@@ -39,7 +39,7 @@ function initBFWT(subtitle, ...links) {
         document.body.insertAdjacentHTML('afterbegin', titleBarHTML);
 
         const subtitleTag = document.getElementById("subtitle");
-        const subtitleTag.textContent = subtitle;
+        subtitleTag.textContent = subtitle;
 
         linksPlatter = document.getElementById("LP");
         for (const [name, href, title] of links) {
