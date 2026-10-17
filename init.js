@@ -6,23 +6,12 @@ document.head.appendChild(tbstyle);
 
 
 function initBFWT(subtitle, ...links) {
-    if (localStorage.getItem('titleBarHTML') == null) {
-        fetch('/BFWT/titlebar.htmlfrag')
-        .then(response => response.text())
-        .then(new_titleBarHTML => {
-            localStorage.setItem('titleBarHTML', new_titleBarHTML);
-            insert();
-        })
-        .catch(error => {
-            console.error(error);
-            die();
-        });
-    } else {
-        insert();
-        fetch('/BFWT/titlebar.htmlfrag')
+    if (localStorage.getItem('titleBarHTML') != null) { insert(); }
+    fetch('/BFWT/titlebar.htmlfrag')
         .then(response => response.text())
         .then(new_titleBarHTML => {
             if (localStorage.getItem('titleBarHTML') != new_titleBarHTML) {
+                console.log(`Replacing\n${localStorage.getItem('titleBarHTML')}\nwith\n${new_titleBarHTML}`);
                 localStorage.setItem('titleBarHTML', new_titleBarHTML);
                 insert();
             }
@@ -31,10 +20,9 @@ function initBFWT(subtitle, ...links) {
             console.error(error);
             die();
         });
-    }
     
     function insert() {
-        document.getElementById("titleBar")?.remove();
+        document.getElementById("The BFWT Titlebar")?.remove();
         document.body.insertAdjacentHTML('afterbegin', localStorage.getItem('titleBarHTML'));
 
         const subtitleTag = document.getElementById("subtitle");
