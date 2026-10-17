@@ -1,4 +1,4 @@
-<div class="titleBar">
+<div id="BFWTTitleBar" class="titleBar">
   <div class="titlePlate">
     <div class="titleBFWT">
       <a href="https://xjtpl.github.io/BFWT/"><span style="color: red;">B</span><span style="color: yellow;">F</span><span style="color: lime;">W</span><span style="color: blue;">T</span></a>
