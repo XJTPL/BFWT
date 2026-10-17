@@ -7,7 +7,7 @@
   </div>
   <div id="LP" class="linksPlatter"></div>
 </div>
-<div id="The Bottom Bar", class="bottomBar">
+<div id="The Bottom Bar" class="bottomBar">
   <span>Made by <a href="https://github.com/XJTPL">XJT Pentonal Laboratories</a></span>
   <span><a href="#" onclick="gotoghs(); return false;" style="text-decoration: underline;">View GitHub Source</a></span>
 </div>
