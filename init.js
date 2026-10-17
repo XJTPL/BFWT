@@ -1,18 +1,22 @@
 const tbstyle = document.createElement("link");
 tbstyle.rel = "stylesheet";
 tbstyle.type = "text/css";
-tbstyle.href = "/BFWT/base-style.css";
-document.head.appendChild(tbstyle);
+tbstyle.href = "/BFWT/fragments/base-style.css";
+document.head.append(tbstyle);
 
 
 function initBFWT(subtitle, ...links) {
-    if (localStorage.getItem('titleBarHTML') != null) { insert(); }
-    fetch('/BFWT/titlebar.htmlfrag')
+    var barsHTML = localStorage.getItem('barsHTML');
+    if (barsHTML != null) {
+        insert();
+    }
+
+    fetch('/BFWT/fragments/bars.htmlfrag')
         .then(response => response.text())
-        .then(new_titleBarHTML => {
-            if (localStorage.getItem('titleBarHTML') != new_titleBarHTML) {
-                console.log(`Replacing\n${localStorage.getItem('titleBarHTML')}\nwith\n${new_titleBarHTML}`);
-                localStorage.setItem('titleBarHTML', new_titleBarHTML);
+        .then(new_barsHTML => {
+            if (barsHTML != new_barsHTML) {
+                console.log(`Replacing\n${barsHTML}\nwith\n${new_barsHTML}`);
+                localStorage.setItem('barsHTML', new_barsHTML);
                 insert();
             }
         })
@@ -22,8 +26,15 @@ function initBFWT(subtitle, ...links) {
         });
     
     function insert() {
-        document.getElementById("The BFWT Titlebar")?.remove();
-        document.body.insertAdjacentHTML('afterbegin', localStorage.getItem('titleBarHTML'));
+        barsHTML = localStorage.getItem('barsHTML');
+        const parser = new DOMParser();
+        const bars = parser.parseFromString(barsHTML, "text/html");
+        const tbid = "The BFWT Title Bar";
+        document.getElementById(tbid)?.remove();
+        document.body.prepend(bars.getElementById(tbid));
+        const bbid = "The Bottom Bar";
+        document.getElementById(bbid)?.remove();
+        document.body.append(bars.getElementById(bbid));
 
         const subtitleTag = document.getElementById("subtitle");
         subtitleTag.textContent = subtitle;
@@ -59,5 +70,9 @@ function waitForDOMUpdate() {
       requestAnimationFrame(resolve);
     });
   });
+}
+
+function gtghs() {
+    window.location.href = window.location.href.replace("xjtpl.github.io", "github.com/XJTPL");
 }
 

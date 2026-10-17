@@ -1,4 +1,4 @@
-<div id="The BFWT Titlebar" class="titleBar">
+<div id="The BFWT Title Bar" class="titleBar">
   <div class="titlePlate">
     <div class="titleBFWT">
       <a href="https://xjtpl.github.io/BFWT/"><span style="color: red;">B</span><span style="color: yellow;">F</span><span style="color: lime;">W</span><span style="color: blue;">T</span></a>
@@ -6,4 +6,8 @@
     <div id="subtitle" class="subtitle"></div>
   </div>
   <div id="LP" class="linksPlatter"></div>
+</div>
+<div id="The Bottom Bar", class="bottomBar">
+  <span>Made by <a href="https://github.com/XJTPL">XJT Pentonal Laboratories</a></span>
+  <span><a href="#" onclick="gotoghs(); return false;" style="text-decoration: underline;">View GitHub Source</a></span>
 </div>

@@ -28,7 +28,7 @@ html, body {
     text-decoration: none;
   }
   & a:hover {
-    text-decoration: underline #E1E1E1 solid 4px;
+    text-decoration: underline #E1E1E1 double 4px; /* E1 = 31 = WT, right???????????????? */
   }
 }
 .subtitle {
@@ -43,7 +43,7 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  row-gap: 8px;
+  row-gap: 4px;
   & a {
     color: currentColor;
     text-decoration: underline;
@@ -59,4 +59,18 @@ html, body {
 .anchorDiv {
   padding-left: 8px;
   min-width: 0;
+}
+.bottomBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #313131;
+  color: #BFBFBF;
+  & a {
+    color: currentColor;
+    text-decoration: none;
+  }
+  & a:hover {
+    text-decoration: underline;
+  }
 }
