@@ -62,9 +62,11 @@ html, body {
 }
 .bottomBar {
   width: 100%;
+  padding: 4px;
   display: flex;
   justify-content: space-between;
   background-color: #313131;
+  font-size: 16px;
   color: #BFBFBF;
   & a {
     color: currentColor;
