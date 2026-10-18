@@ -69,6 +69,7 @@ body {
 .bottomBar {
   width: 100%;
   padding: 4px;
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   background-color: #313131;
