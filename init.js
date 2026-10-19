@@ -26,6 +26,15 @@ function initBFWT(subtitle, ...links) {
         });
     
     function insert() {
+        try {
+            insert_try();
+        } catch (error) {
+            console.error(error);
+            die();
+        }
+    }
+
+    function insert_try() {
         barsHTML = localStorage.getItem('barsHTML');
         const parser = new DOMParser();
         const bars = parser.parseFromString(barsHTML, "text/html");
