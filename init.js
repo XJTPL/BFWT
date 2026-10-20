@@ -30,7 +30,6 @@ function initBFWT(subtitle, ...links) {
             insert_try();
         } catch (error) {
             console.error(error);
-            die();
         }
     }
 
@@ -68,6 +67,7 @@ function initBFWT(subtitle, ...links) {
 
 
 function die() {
+    console.log(localStorage.getItem('barsHTML'));
     document.documentElement.innerHTML = "512 Unexpected Failure";
     throw null;
 }
