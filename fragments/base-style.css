@@ -12,6 +12,7 @@ body {
 }
 .titleBar {
   width: 100%;
+  margin-bottom: 8px;
   border-bottom: 5px solid #313131;
   background-color: #BFBFBF;  /* cuz... yk... BF31 = BFWT...??? */
   display: flex;
@@ -43,7 +44,8 @@ body {
 .linksPlatter {
   text-align: left;
   font-size: 16px;
-  font-family: Tahoma, sans-serif;
+  font-family: Tahoma, sans-serif;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
