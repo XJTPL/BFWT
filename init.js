@@ -82,7 +82,7 @@ function waitForDOMUpdate() {
   });
 }
 
-function gtghs() {
+function gotoghs() {
     window.location.href = window.location.href.replace("xjtpl.github.io", "github.com/XJTPL");
 }
 
