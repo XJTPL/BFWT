@@ -7,7 +7,7 @@ document.head.append(tbstyle);
 const uparams = new URLSearchParams(window.location.search);
 
 
-function initBFWT(subtitle, ...links) {
+function initBFWT(subtitle, links) {
     var barsHTML = localStorage.getItem('barsHTML');
     if (barsHTML != null) {
         insert();
@@ -85,6 +85,10 @@ function waitForDOMUpdate() {
 }
 
 function gotoghs() {
-    window.location.href = window.location.href.replace("xjtpl.github.io", "github.com/XJTPL");
+    window.location.href = window.location.href.replace("xjtpl.github.io/BFWT", "github.com/XJTPL/BFWT/tree/main");
+}
+
+function redirect(link) {
+    window.location.replace(link);
 }
 

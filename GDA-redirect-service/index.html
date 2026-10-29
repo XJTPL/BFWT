@@ -18,9 +18,43 @@
     <h1>Google Drive Archive Redirect Link Generation Tool</h1>
   </div>
   <script>
-    document.getElementById("error").style.display = "inline";
-    initBFWT("Google Drive Archive Redirect Service",
-      []);
+    fetch('./links-dict.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('512 Unexpected Failure or Bad Response');
+      }
+      return response.json();
+      })
+      .then(links => {
+        if (uparams.has("s")) {
+          const season = uparams.get("s");
+          const episode = uparams.get("e");
+          if (season == "all") {
+            redirect(links["all"]);
+          } else {
+            link = links[season][episode];
+            if (link == null) {
+              proceed(true);
+            } else {
+              redirect(link);
+            }
+          }
+        } else {
+          proceed();
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        die();
+      });
+
+    function proceed(invalida=false) {
+      if (invalida) {
+        document.getElementById("error").style.display = "inline";
+      }
+      initBFWT("Google Drive Archive Redirect Service", []);
+    }
+    
   </script>
 </body>
 </html>
