@@ -4,6 +4,8 @@ tbstyle.type = "text/css";
 tbstyle.href = "/BFWT/fragments/base-style.css";
 document.head.append(tbstyle);
 
+const uparams = new URLSearchParams(window.location.search);
+
 
 function initBFWT(subtitle, ...links) {
     var barsHTML = localStorage.getItem('barsHTML');

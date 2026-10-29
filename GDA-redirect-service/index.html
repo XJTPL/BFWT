@@ -13,11 +13,12 @@
 </head>
 <body>
   <div class="body" style="text-align: center;">
-    <h2 id="error">Whoops! The redirect link you were given was invalid! However, you can show <em>who's</em> the one that can make a valid link by using the tool that will be made later lol:</h2>
+    <h2 id="error" style="display: none;">Whoops! The redirect link you were given was invalid! However, you can show <em>who's</em> the one that can make a valid link by using the tool that will be made later lol:</h2>
     <br>
     <h1>Google Drive Archive Redirect Link Generation Tool</h1>
   </div>
   <script>
+    document.getElementById("error").style.display = "inline";
     initBFWT("Google Drive Archive Redirect Service",
       []);
   </script>
