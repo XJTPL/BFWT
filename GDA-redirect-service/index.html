@@ -32,11 +32,16 @@
         if (uparams.has("s")) {
           const season = uparams.get("s");
           const episode = uparams.has("e") ? uparams.get("e") : "all";
-          link = links[season][episode];
-          if (link == null) {
+          eplinks = links[season];
+          if (eplinks == null) {
             proceed(true);
           } else {
-            redirect(link);
+            link = eplinks[episode];
+            if (link == null) {
+              proceed(true);
+            } else {
+              redirect(link);
+            }
           }
         } else {
           proceed();
