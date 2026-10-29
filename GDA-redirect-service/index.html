@@ -28,7 +28,7 @@
       .then(links => {
         if (uparams.has("s")) {
           const season = uparams.get("s");
-          const episode = uparams.get("e");
+          const episode = uparams.has("e") ? uparams.get("e") : "all";
           if (season == "all") {
             redirect(links["all"]);
           } else {
