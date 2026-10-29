@@ -19,6 +19,7 @@ function initBFWT(subtitle, ...links) {
                 localStorage.setItem('barsHTML', new_barsHTML);
                 insert();
             }
+            document.documentElement.style.visibility = 'visible';
         })
         .catch(error => {
             console.error(error);
