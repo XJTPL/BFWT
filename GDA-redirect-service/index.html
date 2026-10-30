@@ -13,14 +13,9 @@
 </head>
 <body>
   <div class="body" style="text-align: center;">
-    <h2 id="error" style="display: none;">
+    <h1 id="error" style="display: none;">
       Whoops! The redirect link you were given was invalid!<br>
-      However, you can show <em>who's</em> the one that can make a valid link by using the tool that will be made later lol:
-    </h2>
-    <br>
-    <br>
-    <h1>Google Drive Archive Redirect Link Generation Tool</h1>
-    WIP
+    </h1>
   </div>
   <script>
     fetch('./links-dict.json')
@@ -34,16 +29,11 @@
         if (uparams.has("s")) {
           const season = uparams.get("s");
           const episode = uparams.has("e") ? uparams.get("e") : "all";
-          eplinks = links[season];
-          if (eplinks == null) {
+          link = links[season]?.[episode];
+          if (link == null) {
             proceed(true);
           } else {
-            link = eplinks[episode];
-            if (link == null) {
-              proceed(true);
-            } else {
-              redirect(link);
-            }
+            redirect(link);
           }
         } else {
           proceed();
