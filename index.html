@@ -29,7 +29,7 @@
       return response.json();
     }).then(links => {
       if (uparams.has("gda-redirect")) {
-        var stuff = uparams.get("gda-redirect").match(/s?(\d*)e?(\w*)/i);
+        var stuff = uparams.get("gda-redirect").match(/s?(\d*)e?([\w-]*)/i);
         const season = stuff[1].trim() || "all";
         const episode = stuff[2].trim() || "all";
         link = links[season]?.[episode];
