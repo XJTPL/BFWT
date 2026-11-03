@@ -70,8 +70,7 @@ function initBFWT(subtitle, links) {
 
 
 function die() {
-    console.log(localStorage.getItem('barsHTML'));
-    document.documentElement.innerHTML = "512 Unexpected Failure";
+    document.documentElement.innerHTML = "512 Unexpected Failure or Bad Response";
     throw null;
 }
 

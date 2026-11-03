@@ -13,14 +13,41 @@
 </head>
 <body>
   <div class="body">
+    <div class="body" style="text-align: center;">
+      <h1 id="error" style="display: none;">Whoops! The redirect link you were given was invalid!</h1>
+      <br>
+    </div>
     <h1>Welcome to the official BFWT website!</h1>
-    <p>(29th October 2026) I made some new updates to the websites, mainly namely the <a href="./GDA-redirect-service">GDrive Archive Redirect Service</a> and the new <a href="more">More Links...</a> page.</p>
+    <p>(3rd November 2026) The <a href="GDA-redirect-service">GDrive Archive Redirect Service</a> has been merged into the homepage(the one you are reading this from right now), the title bars have been updates, and a 404 page has also been added, yaey!</p>
     <p>I'm not really sure what to put on the Homepage right now, so please use the links above(and on the Title Bar) and enjoy BFWT!</p>
   </div>
   <script>
+    fetch('./gda-redirect-links.json').then(response => {
+      if (!response.ok) {
+        throw new Error('Bad Response');
+      }
+      return response.json();
+    }).then(links => {
+      if (uparams.has("gda-redirect")) {
+        var stuff = uparams.get("gda-redirect").match(/s?(\d*)e?(\w*)/i);
+        const season = stuff[1] || "all";
+        const episode = stuff[2] || "all";
+        link = links[season]?.[episode];
+        if (link == null) {
+          document.getElementById("error").style.display = "inline";
+        } else {
+          redirect(link);
+        }
+      }
+    }).catch(error => {
+      console.error(error);
+      die();
+    });
+
     initBFWT("Homepage", [
-      ["Google Drive Archive", "./GDA-redirect-service/?s=all", "Hey it rhymes!"],
-      ["Read now!", "/BFWT/read", "Read the comics on the website instead of on Google Drive"]
+      ["Google Drive Archive", "?gda-redirect=all", "Hey it rhymes!"],
+      ["Read now!", "read", "Read the comics on the website instead of on Google Drive"],
+      ["More links...", "more", "See more!"]
     ]);
   </script>
 </body>
