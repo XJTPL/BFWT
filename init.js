@@ -35,7 +35,7 @@ function initBFWT(subtitle, links) {
         insert();
     }
 
-    fetch('/BFWT/fragments/bars.htmlfrag')
+    fetch('/BFWT/fragments/bars.html')
         .then(response => response.text())
         .then(new_barsHTML => {
             if (barsHTML != new_barsHTML) {
