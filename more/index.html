@@ -9,6 +9,18 @@
     .body {
       padding: 8px;
     }
+    .shiny {
+      padding: 4px;
+      border: 1.5 solid transparent;
+      border-radius: 4px;
+      background:
+        linear-gradient(to top, #007fff 50%, #7faad4) padding-box,
+        linear-gradient(to bottom, #007fff, #005fbf) border-box;
+    } .shiny:active {
+      background:
+        linear-gradient(to bottom, #005fbf 50%, #3f556a) padding-box,
+        linear-gradient(to top, #007fff 50%, #4facfe) border-box;
+    }
   </style>
 </head>
 <body>
@@ -19,6 +31,11 @@
     </ul>
     <br>
     <p>...and that's all :)</p>
+    <br>
+    <br>
+    <div class="shiny">
+      "This &lt;div&gt; does nothing even if you click on it"
+    </div>
   </div>
   <script>
     initBFWT("Homepage", [
