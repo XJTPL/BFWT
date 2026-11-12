@@ -6,19 +6,19 @@ document.head.append(tbstyle);
 
 const uparams = new URLSearchParams(window.location.search);
 
-if (uparams.has("gda-redirect")) {
-    fetch('./gda-redirect-links.json').then(response => {
+if (uparams.has("gdca-redirect")) {
+    fetch('./gdca-redirect-links.json').then(response => {
         if (!response.ok) {
             throw new Error('Bad Response');
         }
         return response.json();
     }).then(links => {
-        var stuff = uparams.get("gda-redirect").match(/s?(\d*)e?([\w-]*)/i);
+        var stuff = uparams.get("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
         const season = stuff[1].trim() || "all";
         const episode = stuff[2].trim() || "all";
         link = links[season]?.[episode];
         if (link == null) {
-          document.getElementById("GDA redirect error message").style.display = "block";
+          document.getElementById("GDCA redirect error message").style.display = "block";
         } else {
           redirect(link);
         }
