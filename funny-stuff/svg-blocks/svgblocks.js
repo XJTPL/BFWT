@@ -1,7 +1,11 @@
-import { matrix, multiply, transpose } from 'mathjs';
+import { matrix, multiply, rotationMatrix } from 'mathjs';
 
-const Liex = document.getElementById("Liex");  // a SVG tag iydk
+  // a SVG tag iydk
 const svg_ns = "http://www.w3.org/2000/svg";
+
+var azimuth = Math.PI / 6;
+var altitude = Math.PI / 4;
+var spin = 0;
 
 var line_color = "black";
 var line_width = "3";
@@ -17,7 +21,7 @@ function clear_all() {
     }
 }
 
-function line(x1, y1, x2, y2) {
+function line(svg, x1, y1, x2, y2) {
     const line = document.createElementNS(svg_ns, "line");
     line.setAttribute("x1", x1);
     line.setAttribute("y1", y1);
@@ -25,7 +29,7 @@ function line(x1, y1, x2, y2) {
     line.setAttribute("y2", y2);
     line.setAttribute("stroke", line_color);
     line.setAttribute("stroke-width", line_width);
-    Liex.appendChild(line);
+    svg.appendChild(line);
 }
 
 function
