@@ -1,11 +1,24 @@
+// Constants
+
+const homepage_links = [
+    ["Google Drive Comic Archive", "/BFWT/?gdca-redirect=all", "Hey it rhymes!"],
+    ["Read now!", "/BFWT/read", "idk what this is supposed to do anymore lol"],
+    ["More links...", "/BFWT/more", "See more!"]
+];
+
+
+// Load style CSS
+
 const tbstyle = document.createElement("link");
 tbstyle.rel = "stylesheet";
 tbstyle.type = "text/css";
 tbstyle.href = "/BFWT/fragments/base-style.css";
 document.head.append(tbstyle);
 
-const uparams = new URLSearchParams(window.location.search);
 
+// GDCA Redirect Service
+
+const uparams = new URLSearchParams(window.location.search);
 if (uparams.has("gdca-redirect")) {
     fetch('./gdca-redirect-links.json').then(response => {
         if (!response.ok) {
@@ -29,6 +42,8 @@ if (uparams.has("gdca-redirect")) {
 }
 
 
+// Actual stuff
+
 function initBFWT(subtitle, links) {
     var barsHTML = localStorage.getItem('barsHTML');
     if (barsHTML != null) {
@@ -43,7 +58,9 @@ function initBFWT(subtitle, links) {
                 localStorage.setItem('barsHTML', new_barsHTML);
                 insert();
             }
-            document.documentElement.style.visibility = 'visible';
+            waitForDOMUpdate().then(() => {
+                document.documentElement.style.visibility = 'visible';
+            });
         })
         .catch(error => {
             console.error(error);
@@ -90,19 +107,20 @@ function initBFWT(subtitle, links) {
     }
 }
 
+function waitForDOMUpdate() {
+    return new Promise((resolve) => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(resolve);
+        });
+    });
+}
+
+
+// Closing functions
 
 function die() {
     document.documentElement.innerHTML = "512 Unexpected Failure or Bad Response";
     throw null;
-}
-
-
-function waitForDOMUpdate() {
-  return new Promise((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(resolve);
-    });
-  });
 }
 
 function gotoghs() {
