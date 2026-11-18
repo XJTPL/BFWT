@@ -110,8 +110,8 @@ function initBFWT(subtitle, links) {
 function waitForDOMUpdate() {
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
-            requestAnimationFrame(resolve);
-        });
+            setTimeout(resolve, 0);}
+        );
     });
 }
 
