@@ -113,7 +113,7 @@ function waitForDOMUpdate() {
             setTimeout(resolve, 0);}
         );
     });
-}
+} // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
 
 
 // Closing functions
