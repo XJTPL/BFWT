@@ -36,6 +36,13 @@
       image.style = "cursor: pointer;"
       bodyDiv.append(image);
     })));
+
+    function load() {
+      window.title = `${name} | BFWT Character Guide`;
+    }
+
+    window.addEventListener('upupdate', load);
+    window.addEventListener('popstate', load);
   </script>
 </body>
 </html>

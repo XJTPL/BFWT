@@ -45,6 +45,9 @@ function upget(varName) {
 function upset(varName, value) { // lol the name is supposed to stand for URLSearchParams.set()
     uparams.set(varName, value);
     window.history.pushState({}, '', urlobj);
+    window.dispatchEvent(new CustomEvent('upupdate', {
+        detail: { varName, value, searchParams: uparams }
+    }));
 }
 
 
