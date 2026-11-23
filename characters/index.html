@@ -9,24 +9,68 @@
   <style>
     #body {
       padding: 8px;
+    }
+    #welcomo {
       img {
         width: 160px;
         height: auto;
       }
     }
+    #infobox {
+      padding: 8px 0px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    #picture {
+      width: calc(100% / 3);
+      max-width: 400px;
+      height: auto;
+      border: 5px double grey;
+      border-radius: 15px;
+    }
+    #name {
+      font-weight: bold;
+      font-size: clamp(2em, 10vw, 6em);
+    }
+    #infos {
+      font-family: 'Comfortaa', sans-serif;
+    }
+    #desc {
+      font-family: Verdana, sans-serif;
+      text-indent: 3em;
+    }
   </style>
 </head>
 <body>
   <div id="body">
-    <h1 style="text-align: center; font-family: 'Comfortaa', sans-serif;">
-      Forgot who that one character is? Read it up here!
-    </h1>
-    <p style="text-align: center;">(Click on a the picture of a character below)</p>
+    <div id="welcomo">
+      <h1 style="text-align: center; font-family: 'Comfortaa', sans-serif;">
+        Forgot who that one character is? Read it up here!
+      </h1>
+      <p style="text-align: center;">(Click on a the picture of a character below)</p>
+    </div>
+    <div id="stuff">
+      <div id="infobox">
+        <img id="picture" src="https://github.com/XJTPL/BFWT-archive/blob/main/standalone-artworks/character-guide-pictures/Hammerpop.png?raw=true">
+        <div>
+          <div id="name">Hammerpop</div>
+          <ul id="infos">
+            <li>Male | He/Him</li>
+            <li><b>First appearance:</b> Season 4: BFWTYW (lost)</li>
+            <li><b>First debut:</b> Season 8: BFWTCC (upcoming)</li>
+          </ul>
+        </div>
+      </div>
+      <div id="desc">
+        <p>Same-age cousin of Token</p>
+      </div>
+    </div>
   </div>
   <script>
     initBFWT("Character Guide", homepage_links, true);
     
-    bodyDiv = document.getElementById("body");
+    welcomeDiv = document.getElementById("welcomo");
     getFile("names.json", response => response.json().then(list => list.forEach(name => {
       const image = document.createElement("img");
       image.src = `https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/${name}.png`;
@@ -34,7 +78,7 @@
       image.title = name;
       image.onclick = () => {upset("name", name);};
       image.style = "cursor: pointer;"
-      bodyDiv.append(image);
+      welcomeDiv.append(image);
     })));
 
     function load() {
