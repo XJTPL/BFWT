@@ -107,7 +107,7 @@ function getFile(link, thenFunction) {
         if (!response.ok) {
             throw new Error('Bad Response');
         }
-        thenFunction(response);
+        return thenFunction(response);
     }).catch(error => {
         console.error(error);
         die();
