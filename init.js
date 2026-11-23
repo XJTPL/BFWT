@@ -16,12 +16,12 @@ tbstyle.href = "/BFWT/fragments/base-style.css";
 document.head.append(tbstyle);
 
 
-// GDCA Redirect Service
+// GDCA Redirect Service & URL Functions
 
 const uparams = new URLSearchParams(window.location.search);
-if (uparams.has("gdca-redirect")) {
+if (uphas("gdca-redirect")) {
     getFile('/BFWT/gdca-redirect-links.json', response => response.json().then(links => {
-        var stuff = uparams.get("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
+        var stuff = upget("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
         const season = stuff[1].trim() || "all";
         const episode = stuff[2].trim() || "all";
         link = links[season]?.[episode];
@@ -31,6 +31,21 @@ if (uparams.has("gdca-redirect")) {
             redirect(link);
         }
     }));
+}
+
+function uphas(varName) {
+    return uparams.has(varName);
+}
+
+function upget(varName) {
+    return uparams.get(varName);
+}
+
+var URLWithNewParams = "";
+function upset(varName, value) { // lol the name is supposed to stand for URLSearchParams.set()
+    uparams.set(varName, value);
+    URLWithNewParams = `${window.location.pathname}?${uparams.toString()}`;
+    window.history.replaceState({}, '', URLWithNewParams);
 }
 
 
@@ -55,13 +70,13 @@ function initBFWT(subtitle, links) {
     
     function insert() {
         try {
-            insert_try();
+            insertTry();
         } catch (error) {
             console.error(error);
         }
     }
 
-    function insert_try() {
+    function insertTry() {
         barsHTML = localStorage.getItem('barsHTML');
         const parser = new DOMParser();
         const bars = parser.parseFromString(barsHTML, "text/html");
@@ -69,7 +84,7 @@ function initBFWT(subtitle, links) {
         const tbid = "The BFWT Title Bar";
         document.getElementById(tbid)?.remove();
         document.body.prepend(bars.getElementById(tbid));
-        
+
         const bbid = "The Bottom Bar";
         document.getElementById(bbid)?.remove();
         document.body.append(bars.getElementById(bbid));

@@ -30,7 +30,7 @@
       image.src = `https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/${name}.png`;
       image.alt = name;
       image.title = name;
-      image.onclick = () => {url.searchParams.set('name', name);}; 
+      image.onclick = () => {upset("name", name);};
       image.style = "cursor: pointer;"
       bodyDiv.append(image);
     })));
