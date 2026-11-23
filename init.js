@@ -92,7 +92,7 @@ function initBFWT(subtitle, links, makeSubtitleAnAnchor=false) {
         if (makeSubtitleAnAnchor) {
             const subtitleAnchor = document.createElement("a");
             subtitleAnchor.href = window.location.origin + window.location.pathname;
-            subtitleAnchor.textContent = 'Visit Example';
+            subtitleAnchor.textContent = subtitle;
             subtitleDiv.append(subtitleAnchor);
         } else {
             subtitleDiv.textContent = subtitle;
