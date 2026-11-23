@@ -26,7 +26,7 @@
     
     bodyDiv = document.getElementById("body");
     getFile("names.json", response => response.json().then(list => list.forEach(name => {
-      const image = document.createElement("link");
+      const image = document.createElement("img");
       image.src = `https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/${name}.png`;
       image.alt = name;
       bodyDiv.append(image);
