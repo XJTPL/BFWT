@@ -18,7 +18,8 @@ document.head.append(tbstyle);
 
 // GDCA Redirect Service & URL Functions
 
-const uparams = new URLSearchParams(window.location.search);
+const urlobj = new URL(window.location.href);
+const uparams = urlobj.searchParams;
 if (uphas("gdca-redirect")) {
     getFile('/BFWT/gdca-redirect-links.json', response => response.json().then(links => {
         var stuff = upget("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
@@ -41,17 +42,15 @@ function upget(varName) {
     return uparams.get(varName);
 }
 
-var URLWithNewParams = "";
 function upset(varName, value) { // lol the name is supposed to stand for URLSearchParams.set()
     uparams.set(varName, value);
-    URLWithNewParams = `${window.location.pathname}?${uparams.toString()}`;
-    window.history.replaceState({}, '', URLWithNewParams);
+    window.history.pushState({}, '', urlobj);
 }
 
 
 // Actual stuff
 
-function initBFWT(subtitle, links) {
+function initBFWT(subtitle, links, makeSubtitleAnAnchor=false) {
     var barsHTML = localStorage.getItem('barsHTML');
     if (barsHTML != null) {
         insert();
@@ -89,8 +88,15 @@ function initBFWT(subtitle, links) {
         document.getElementById(bbid)?.remove();
         document.body.append(bars.getElementById(bbid));
 
-        const subtitleTag = document.getElementById("subtitle");
-        subtitleTag.textContent = subtitle;
+        const subtitleDiv = document.getElementById("subtitle");
+        if (makeSubtitleAnAnchor) {
+            const subtitleAnchor = document.createElement("a");
+            subtitleAnchor.href = window.location.origin + window.location.pathname;
+            subtitleAnchor.textContent = 'Visit Example';
+            subtitleDiv.append(subtitleAnchor);
+        } else {
+            subtitleDiv.textContent = subtitle;
+        }
 
         linksPlatter = document.getElementById("LP");
         for (const [name, href, title] of links) {

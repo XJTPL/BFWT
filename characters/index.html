@@ -24,7 +24,7 @@
     <p style="text-align: center;">(Click on a the picture of a character below)</p>
   </div>
   <script>
-    initBFWT("Character Guide", homepage_links);
+    initBFWT("Character Guide", homepage_links, true);
     
     bodyDiv = document.getElementById("body");
     getFile("names.json", response => response.json().then(list => list.forEach(name => {
