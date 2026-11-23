@@ -20,7 +20,7 @@ document.head.append(tbstyle);
 
 const uparams = new URLSearchParams(window.location.search);
 if (uparams.has("gdca-redirect")) {
-    getFile('./gdca-redirect-links.json', response => response.json().then(links => {
+    getFile('/BFWT/gdca-redirect-links.json', response => response.json().then(links => {
         var stuff = uparams.get("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
         const season = stuff[1].trim() || "all";
         const episode = stuff[2].trim() || "all";
@@ -102,7 +102,7 @@ function waitForDOMUpdate() {
 } // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
 
 function getFile(link, thenFunction) {
-    fetch('./gdca-redirect-links.json')
+    fetch(link)
     .then(response => {
         if (!response.ok) {
             throw new Error('Bad Response');
