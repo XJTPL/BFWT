@@ -65,9 +65,11 @@ function initBFWT(subtitle, links) {
         barsHTML = localStorage.getItem('barsHTML');
         const parser = new DOMParser();
         const bars = parser.parseFromString(barsHTML, "text/html");
+
         const tbid = "The BFWT Title Bar";
         document.getElementById(tbid)?.remove();
         document.body.prepend(bars.getElementById(tbid));
+        
         const bbid = "The Bottom Bar";
         document.getElementById(bbid)?.remove();
         document.body.append(bars.getElementById(bbid));
