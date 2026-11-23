@@ -20,25 +20,17 @@ document.head.append(tbstyle);
 
 const uparams = new URLSearchParams(window.location.search);
 if (uparams.has("gdca-redirect")) {
-    fetch('./gdca-redirect-links.json').then(response => {
-        if (!response.ok) {
-            throw new Error('Bad Response');
-        }
-        return response.json();
-    }).then(links => {
+    getFile('./gdca-redirect-links.json', response => response.json().then(links => {
         var stuff = uparams.get("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
         const season = stuff[1].trim() || "all";
         const episode = stuff[2].trim() || "all";
         link = links[season]?.[episode];
         if (link == null) {
-          document.getElementById("GDCA redirect error message").style.display = "block";
+            document.getElementById("GDCA redirect error message").style.display = "block";
         } else {
-          redirect(link);
+            redirect(link);
         }
-    }).catch(error => {
-        console.error(error);
-        die();
-    });
+    }));
 }
 
 
@@ -50,22 +42,16 @@ function initBFWT(subtitle, links) {
         insert();
     }
 
-    fetch('/BFWT/fragments/bars.html')
-        .then(response => response.text())
-        .then(new_barsHTML => {
-            if (barsHTML != new_barsHTML) {
-                console.log(`Replacing\n${barsHTML}\nwith\n${new_barsHTML}`);
-                localStorage.setItem('barsHTML', new_barsHTML);
-                insert();
-            }
-            waitForDOMUpdate().then(() => {
-                document.documentElement.style.visibility = 'visible';
-            });
-        })
-        .catch(error => {
-            console.error(error);
-            die();
+    getFile('/BFWT/fragments/bars.html', response => response.text().then(new_barsHTML => {
+        if (barsHTML != new_barsHTML) {
+            console.log(`Replacing\n${barsHTML}\nwith\n${new_barsHTML}`);
+            localStorage.setItem('barsHTML', new_barsHTML);
+            insert();
+        }
+        waitForDOMUpdate().then(() => {
+            document.documentElement.style.visibility = 'visible';
         });
+    }));
     
     function insert() {
         try {
@@ -115,11 +101,24 @@ function waitForDOMUpdate() {
     });
 } // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
 
+function getFile(link, thenFunction) {
+    fetch('./gdca-redirect-links.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Bad Response');
+        }
+        thenFunction(response);
+    }).catch(error => {
+        console.error(error);
+        die();
+    });
+}
+
 
 // Closing functions
 
 function die() {
-    document.documentElement.innerHTML = "512 Unexpected Failure or Bad Response";
+    document.documentElement.innerHTML = "512 Unexpected Failure";
     throw null;
 }
 
