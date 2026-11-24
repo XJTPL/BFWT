@@ -81,8 +81,8 @@
       welcomeDiv.append(image);
     })));
 
-    function load() {
-      document.title = `${name} | BFWT Character Guide`;
+    function load(event) {
+      document.title = event.detail.value + " | BFWT Character Guide";
     }
 
     window.addEventListener('upupdate', load);

@@ -46,7 +46,11 @@ function upset(varName, value) { // lol the name is supposed to stand for URLSea
     uparams.set(varName, value);
     window.history.pushState({}, '', urlobj);
     window.dispatchEvent(new CustomEvent('upupdate', {
-        detail: { varName, value, searchParams: uparams }
+        detail: {
+            name: varName,
+            value: value,
+            searchParams: uparams
+        }
     }));
 }
 
