@@ -18,7 +18,7 @@
     }
     #stuff {
       font-family: Verdana, sans-serif;
-      padding: 8px 0px 40px;
+      padding-top: 8px;
     }
     #infobox {
       display: flex;
@@ -66,7 +66,7 @@
       <div id="desc">
         <p>Same-age cousin of Token</p>
       </div>
-      <button type="button" onclick="updel('name')" style="display: block; margin-left: auto;">Go back</button>
+      <button type="button" onclick="updel('name')" style="display: block; margin: 32px 0px 64px auto;">Go back</button>
     </div>
   </div>
   <script>
@@ -88,8 +88,8 @@
     }
 
     function load(event) {
-      if (event.detail.action == "set") {
-        document.title = event.detail.value + " | BFWT Character Guide";
+      if (uphas("name")) {
+        document.title = upget("name") + " | BFWT Character Guide";
       } else {
         document.title = "BFWT Character Guide"
       }
