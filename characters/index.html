@@ -73,7 +73,7 @@
     welcomeDiv = document.getElementById("welcomo");
     getFile("names.json", response => response.json().then(list => list.forEach(name => {
       const image = document.createElement("img");
-      image.src = `https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/${name}.png`;
+      image.src = "https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/" + name + ".png";
       image.alt = name;
       image.title = name;
       image.onclick = () => {upset("name", name);};
@@ -82,7 +82,7 @@
     })));
 
     function load() {
-      window.title = `${name} | BFWT Character Guide`;
+      document.title = `${name} | BFWT Character Guide`;
     }
 
     window.addEventListener('upupdate', load);
