@@ -70,19 +70,25 @@
   <script>
     initBFWT("Character Guide", homepage_links, true);
     
-    welcomeDiv = document.getElementById("welcomo");
-    getFile("names.json", response => response.json().then(list => list.forEach(name => {
-      const image = document.createElement("img");
-      image.src = "https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/" + name + ".png";
-      image.alt = name;
-      image.title = name;
-      image.onclick = () => {upset("name", name);};
-      image.style = "cursor: pointer;"
-      welcomeDiv.append(image);
-    })));
+    function loadImages() {
+      welcomeDiv = document.getElementById("welcomo");
+      getFile("names.json", response => response.json().then(list => list.forEach(name => {
+        const image = document.createElement("img");
+        image.src = "https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/" + name + ".png";
+        image.alt = name;
+        image.title = name;
+        image.onclick = () => {upset("name", name);};
+        image.style = "cursor: pointer;"
+        welcomeDiv.append(image);
+      })));
+    }
 
     function load(event) {
-      document.title = event.detail.value + " | BFWT Character Guide";
+      if (event.detail.action == "set") {
+        document.title = event.detail.value + " | BFWT Character Guide";
+      } else {
+        document.title = "BFWT Character Guide"
+      }
     }
 
     window.addEventListener('upupdate', load);

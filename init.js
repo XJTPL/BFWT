@@ -47,6 +47,21 @@ function upset(varName, value) { // lol the name is supposed to stand for URLSea
     window.history.pushState({}, '', urlobj);
     window.dispatchEvent(new CustomEvent('upupdate', {
         detail: {
+            action: "set",
+            name: varName,
+            value: value,
+            searchParams: uparams
+        }
+    }));
+}
+
+function updel(varName) {
+    value = upget(varName);
+    uparams.delete(varName);
+    window.history.pushState({}, '', urlobj);
+    window.dispatchEvent(new CustomEvent('upupdate', {
+        detail: {
+            action: "delete",
             name: varName,
             value: value,
             searchParams: uparams
