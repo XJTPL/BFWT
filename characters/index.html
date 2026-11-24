@@ -16,8 +16,11 @@
         height: auto;
       }
     }
+    #stuff {
+      font-family: Verdana, sans-serif;
+      padding: 8px 0px 40px;
+    }
     #infobox {
-      padding: 8px 0px;
       display: flex;
       align-items: flex-start;
       gap: 20px;
@@ -30,14 +33,12 @@
       border-radius: 15px;
     }
     #name {
-      font-weight: bold;
-      font-size: clamp(2em, 10vw, 6em);
+      font: bold clamp(2em, 10vw, 6em) 'Times New Roman', serif;
     }
     #infos {
       font-family: 'Comfortaa', sans-serif;
     }
     #desc {
-      font-family: Verdana, sans-serif;
       text-indent: 3em;
     }
   </style>
@@ -65,13 +66,16 @@
       <div id="desc">
         <p>Same-age cousin of Token</p>
       </div>
+      <button type="button" onclick="upset('name')" style="display: block; margin-left: auto;">Go back</button>
     </div>
   </div>
   <script>
     initBFWT("Character Guide", homepage_links, true);
     
+    welcomeDiv = document.getElementById("welcomo");
+    var imagesLoaded = false;
     function loadImages() {
-      welcomeDiv = document.getElementById("welcomo");
+      imagesLoaded = true;
       getFile("names.json", response => response.json().then(list => list.forEach(name => {
         const image = document.createElement("img");
         image.src = "https://raw.githubusercontent.com/XJTPL/BFWT-archive/main/standalone-artworks/character-guide-pictures/" + name + ".png";
