@@ -20,19 +20,22 @@ document.head.append(tbstyle);
 
 const urlobj = new URL(window.location.href);
 const uparams = urlobj.searchParams;
-if (uphas("gdca-redirect")) {
-    getFile('/BFWT/gdca-redirect-links.json', response => response.json().then(links => {
-        var stuff = upget("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
-        const season = stuff[1].trim() || "all";
-        const episode = stuff[2].trim() || "all";
-        link = links[season]?.[episode];
-        if (link == null) {
-            document.getElementById("GDCA redirect error message").style.display = "block";
-        } else {
-            redirect(link);
-        }
-    }));
+function checkGDCA() {
+    if (uphas("gdca-redirect")) {
+        getFile('/BFWT/gdca-redirect-links.json', response => response.json().then(links => {
+            var stuff = upget("gdca-redirect").match(/s?(\d*)e?([\w-]*)/i);
+            const season = stuff[1].trim() || "all";
+            const episode = stuff[2].trim() || "all";
+            link = links[season]?.[episode];
+            if (link == null) {
+                document.getElementById("GDCA redirect error message").style.display = "block";
+            } else {
+                redirect(link);
+            }
+        }));
+    }
 }
+checkGDCA;
 
 function uphas(varName) {
     return uparams.has(varName);
@@ -69,35 +72,31 @@ function updel(varName) {
     }));
 }
 
+window.addEventListener('upupdate', checkGDCA);
+window.addEventListener('popstate', checkGDCA);
+
+
+// Data management functions
+
+function getFile(link, thenFunction) {
+    fetch(link)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Bad Response');
+        }
+        return thenFunction(response);
+    }).catch(error => {
+        console.error(error);
+        die();
+    });
+}
+
 
 // Actual stuff
 
 function initBFWT(subtitle, links, makeSubtitleAnAnchor=false) {
-    var barsHTML = localStorage.getItem('barsHTML');
-    if (barsHTML != null) {
-        insert();
-    }
-
-    getFile('/BFWT/fragments/bars.html', response => response.text().then(new_barsHTML => {
-        if (barsHTML != new_barsHTML) {
-            console.log(`Replacing\n${barsHTML}\nwith\n${new_barsHTML}`);
-            localStorage.setItem('barsHTML', new_barsHTML);
-            insert();
-        }
-        waitForDOMUpdate().then(() => {
-            document.documentElement.style.visibility = 'visible';
-        });
-    }));
-    
-    function insert() {
-        try {
-            insertTry();
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    function insertTry() {
+    document.documentElement.style.visibility = 'hidden';
+    getFile('/BFWT/fragments/bars.html', response => response.text().then(barsHTML => {
         barsHTML = localStorage.getItem('barsHTML');
         const parser = new DOMParser();
         const bars = parser.parseFromString(barsHTML, "text/html");
@@ -135,27 +134,18 @@ function initBFWT(subtitle, links, makeSubtitleAnAnchor=false) {
             linkDiv.append(bullet, anchorDiv);
             linksPlatter.append(linkDiv);
         }
-    }
+
+        waitForDOMUpdate().then(() => {
+            document.documentElement.style.visibility = 'visible';
+        });
+    }));
 }
 
-function waitForDOMUpdate() {
+function waitForDOMUpdate() { // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
             setTimeout(resolve, 0);}
         );
-    });
-} // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
-
-function getFile(link, thenFunction) {
-    fetch(link)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Bad Response');
-        }
-        return thenFunction(response);
-    }).catch(error => {
-        console.error(error);
-        die();
     });
 }
 
