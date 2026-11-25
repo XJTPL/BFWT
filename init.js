@@ -35,7 +35,7 @@ function checkGDCA() {
         }));
     }
 }
-checkGDCA;
+checkGDCA();
 
 function uphas(varName) {
     return uparams.has(varName);
