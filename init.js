@@ -45,7 +45,7 @@ function upget(varName) {
     return uparams.get(varName);
 }
 
-function upset(varName, value) {  // lol the name is supposed to stand for URLSearchParams.set()
+function upset(varName, value) { // lol the name is supposed to stand for URLSearchParams.set()
     uparams.set(varName, value);
     window.history.pushState({}, "", urlobj);
     window.dispatchEvent(new CustomEvent('upupdate', {
@@ -141,7 +141,7 @@ function initBFWT(subtitle, links, makeSubtitleAnAnchor=false) {
     }));
 }
 
-function waitForDOMUpdate() {  // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
+function waitForDOMUpdate() { // walaouei i try like 300 ways to make this effective but ig it wont ever do its job properly lol
     return new Promise((resolve) => {
         requestAnimationFrame(() => {
             setTimeout(resolve, 0);}
